@@ -7,7 +7,11 @@ import sys
 
 try:
     lis_dir = os.listdir("./testcases")
-    #print(lis_dir)
+    tmp = lis_dir.copy()
+    for t in lis_dir:
+        if 'input' not in t and 'output' not in t and 'problem' not in t:
+            tmp.remove(t)
+    lis_dir = tmp
 except Exception as e:
     print(e)
 else:
