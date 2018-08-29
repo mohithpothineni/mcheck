@@ -1,6 +1,5 @@
-''' eval like 
-    no git push
-'''
+''' jcheck '''
+
 import os
 import subprocess
 import sys
@@ -24,7 +23,8 @@ else:
         inp_ = f.read()
         f.close()
 
-        p=subprocess.run([sys.argv[1]],shell=True,check=True,input=inp_,stdout=subprocess.PIPE)
+        os.system('javac {}.java'.format(sys.argv[1]))
+        p=subprocess.run(['java',sys.argv[1]],shell=True,check=True,input=inp_,stdout=subprocess.PIPE)
         f = open('./testcases/'+lis_dir[i+n2],'rb')
         outp_ = f.read()
         f.close()
@@ -46,9 +46,14 @@ else:
     
     print("Test score ",str(sum)+"/"+str(i+1))
 
+
+#exp....
 try:
-    p=subprocess.run(['pylint',sys.argv[1]],shell=True,check=True,stdout=subprocess.PIPE)
+    p=subprocess.run(['java','-jar','C:\\Users\\Mohath\\Documents\\jtools\\checkstyle.jar','-c','/sun_checks.xml',sys.argv[1] + '.java'],shell=True,check=True,stdout=subprocess.PIPE)
 except Exception as e:
     print(e.output.replace(b'\r',b'').decode())
 else:
     print(p.stdout.replace(b'\r\n',b'').decode())
+
+
+
