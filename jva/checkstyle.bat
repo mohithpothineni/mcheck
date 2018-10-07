@@ -1,0 +1,1 @@
+java -jar C:\Users\Mohath\Documents\jtools\checkstyle.jar -c /sun_checks.xml %1% 
